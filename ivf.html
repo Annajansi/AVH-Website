@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IVF & Fertility Centre — Annai Velankanni Hospital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1f1e;
+    --deep-blue: #0a1a19;
+    --blue: #e83a62;
+    --sky: #00a397;
+    --accent: #e83a62;
+    --rose: #e83a62;
+    --rose-light: #fce4ec;
+    --rose-mid: #f48fb1;
+    --teal: #00a397;
+    --teal-light: #e0f7f5;
+    --white: #ffffff;
+    --off-white: #f8f6f1;
+    --light-grey: #e8e4dc;
+    --text-dark: #1a1a2e;
+    --text-mid: #4a5568;
+    --text-light: #718096;
+    --red: #e83a62;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-dark); overflow-x: hidden; }
+
+  /* TOP BAR */
+  .top-bar {
+    background: var(--navy);
+    color: rgba(255,255,255,0.75);
+    font-size: 12.5px;
+    padding: 7px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-bar a { color: rgba(255,255,255,0.75); text-decoration: none; }
+  .top-bar a:hover { color: var(--accent); }
+  .tb-left, .tb-right { display: flex; gap: 24px; align-items: center; }
+  .emergency-tag {
+    background: var(--red); color: white; padding: 3px 10px;
+    border-radius: 3px; font-weight: 600; font-size: 11px;
+    letter-spacing: 0.5px; animation: pulse-red 2s infinite;
+  }
+  @keyframes pulse-red { 0%,100%{opacity:1} 50%{opacity:0.7} }
+
+  /* HEADER */
+  header {
+    background: white; padding: 16px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 16px rgba(10,22,40,0.08);
+    position: sticky; top: 0; z-index: 1000;
+  }
+  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-icon {
+    height: 52px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .logo-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .logo-text p { font-size: 11px; color: var(--text-mid); letter-spacing: 0.5px; text-transform: uppercase; }
+  nav { display: flex; gap: 4px; align-items: center; }
+  nav a { text-decoration: none; color: var(--text-dark); font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: all 0.2s; }
+  nav a:hover { background: var(--off-white); color: var(--blue); }
+  .nav-ivf { color: var(--rose) !important; font-weight: 700 !important; }
+  .nav-cta { background: var(--blue) !important; color: white !important; padding: 10px 20px !important; border-radius: 8px !important; margin-left: 8px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--navy) !important; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1a0a2e 0%, #2d1052 40%, #1a1060 100%);
+    min-height: 86vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 60px 40px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 65% 50%, rgba(232,67,147,0.25) 0%, transparent 55%),
+      radial-gradient(circle at 15% 80%, rgba(13,148,136,0.15) 0%, transparent 40%),
+      radial-gradient(circle at 85% 10%, rgba(232,160,32,0.1) 0%, transparent 30%);
+  }
+  /* Floating petals */
+  .petal { position: absolute; opacity: 0.15; font-size: 24px; animation: float-petal linear infinite; pointer-events: none; }
+  .petal:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; }
+  .petal:nth-child(2) { left: 15%; animation-duration: 15s; animation-delay: 3s; }
+  .petal:nth-child(3) { left: 75%; animation-duration: 10s; animation-delay: 1s; }
+  .petal:nth-child(4) { left: 88%; animation-duration: 14s; animation-delay: 5s; }
+  .petal:nth-child(5) { left: 45%; animation-duration: 11s; animation-delay: 2s; }
+  @keyframes float-petal {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.15; }
+    90% { opacity: 0.1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  }
+
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; max-width: 1200px; margin: 0 auto;
+    width: 100%; position: relative; z-index: 1; align-items: center;
+  }
+  .hero-content { color: white; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,67,147,0.15);
+    border: 1px solid rgba(232,67,147,0.4);
+    color: #f9a8d4; padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .hero h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px; font-weight: 700; line-height: 1.1;
+    margin-bottom: 16px; color: white;
+  }
+  .hero h2 .rose { color: #f9a8d4; }
+  .hero h2 .gold { color: var(--accent); }
+  .hero-tagline {
+    font-size: 17px; font-style: italic;
+    color: rgba(255,255,255,0.65); margin-bottom: 20px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .hero p { font-size: 15.5px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 36px; max-width: 480px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-rose {
+    background: var(--rose); color: white;
+    padding: 14px 28px; border-radius: 8px;
+    font-weight: 700; font-size: 15px; text-decoration: none;
+    border: none; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-rose:hover { background: #d4357d; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: white;
+    padding: 13px 28px; border-radius: 8px;
+    font-weight: 600; font-size: 15px; text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: white; }
+  .hero-stats {
+    display: flex; gap: 28px; margin-top: 44px; padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 700; color: #f9a8d4; line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative; display: flex; justify-content: center; align-items: center;
+  }
+  .hero-circle {
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,67,147,0.2) 0%, rgba(13,148,136,0.1) 60%, transparent 100%);
+    border: 1px solid rgba(232,67,147,0.25);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; position: relative;
+  }
+  .hero-circle-icon { font-size: 80px; }
+  .hero-circle h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 22px;
+    color: #f9a8d4; font-weight: 600; text-align: center;
+  }
+  .hero-circle p { font-size: 13px; color: rgba(255,255,255,0.6); text-align: center; max-width: 240px; }
+  .orbit-badge {
+    position: absolute; background: white; border-radius: 12px;
+    padding: 10px 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    font-size: 12px; font-weight: 700; color: var(--navy);
+    display: flex; align-items: center; gap: 8px;
+    white-space: nowrap;
+  }
+  .orbit-badge:nth-child(2) { top: 10px; right: -20px; }
+  .orbit-badge:nth-child(3) { bottom: 20px; left: -30px; }
+  .orbit-badge:nth-child(4) { top: 50%; right: -40px; transform: translateY(-50%); }
+
+  /* SECTION COMMON */
+  section { padding: 80px 40px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  .tag-rose { color: var(--rose); }
+  .tag-teal { color: var(--teal); }
+  .tag-blue { color: var(--sky); }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.15; margin-bottom: 16px; }
+  .section-desc { font-size: 16px; color: var(--text-mid); line-height: 1.7; max-width: 620px; }
+
+  /* TREATMENTS */
+  .treatments { background: white; }
+  .treat-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 48px;
+  }
+  .treat-card {
+    border-radius: 16px; padding: 32px 28px;
+    border: 1.5px solid var(--light-grey);
+    transition: all 0.25s; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .treat-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--rose), #a855f7);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .treat-card:hover::after { transform: scaleX(1); }
+  .treat-card:hover { box-shadow: 0 12px 40px rgba(232,67,147,0.1); transform: translateY(-3px); border-color: var(--rose-mid); }
+  .treat-icon { font-size: 40px; margin-bottom: 16px; }
+  .treat-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .treat-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
+  .treat-tag {
+    display: inline-block; background: var(--rose-light);
+    color: var(--rose); font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+
+  /* PROCESS */
+  .process { background: var(--off-white); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 0; margin-top: 48px; position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute; top: 32px; left: 10%; right: 10%;
+    height: 2px; background: linear-gradient(90deg, var(--rose), #a855f7, var(--teal));
+    z-index: 0;
+  }
+  .process-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+  .step-circle {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: white; border: 2.5px solid var(--rose);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(232,67,147,0.2);
+  }
+  .step-num {
+    position: absolute; top: -4px; right: calc(50% - 40px);
+    background: var(--rose); color: white;
+    width: 20px; height: 20px; border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .process-step h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .process-step p { font-size: 12.5px; color: var(--text-mid); line-height: 1.5; }
+
+  /* SUCCESS RATES */
+  .success { background: linear-gradient(135deg, #1a0a2e 0%, #2d1052 60%, #1a1060 100%); padding: 80px 40px; position: relative; overflow: hidden; }
+  .success::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 60% 50%, rgba(232,67,147,0.15) 0%, transparent 60%);
+  }
+  .success .section-title { color: white; }
+  .success .section-desc { color: rgba(255,255,255,0.7); }
+  .success-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    align-items: center; max-width: 1200px; margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .success-stats { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .success-stat {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px; padding: 24px 20px; text-align: center;
+  }
+  .success-stat .num {
+    font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 700;
+    color: #f9a8d4; line-height: 1;
+  }
+  .success-stat .label { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 6px; line-height: 1.4; }
+  .success-visual {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .success-bar-item { }
+  .success-bar-label { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .success-bar-label span:first-child { font-size: 13.5px; color: rgba(255,255,255,0.8); font-weight: 500; }
+  .success-bar-label span:last-child { font-size: 13.5px; color: #f9a8d4; font-weight: 700; }
+  .bar-track { background: rgba(255,255,255,0.1); border-radius: 4px; height: 8px; }
+  .bar-fill { height: 8px; border-radius: 4px; background: linear-gradient(90deg, var(--rose), #a855f7); }
+
+  /* WHY IVF HERE */
+  .why-ivf { background: white; }
+  .why-ivf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .why-ivf-visual {
+    background: linear-gradient(135deg, var(--rose-light), #fce7f3);
+    border-radius: 16px; height: 440px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 16px; position: relative; overflow: hidden;
+  }
+  .why-ivf-visual::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(232,67,147,0.08) 0%, transparent 70%);
+  }
+  .why-ivf-visual-icon { font-size: 72px; }
+  .why-list { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .why-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 20px; background: var(--off-white);
+    border-radius: 10px; border-left: 3px solid var(--rose);
+  }
+  .why-item-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .why-item h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .why-item p { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+
+  /* DOCTORS */
+  .doctors { background: var(--off-white); }
+  .doctors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .doctor-card {
+    background: white; border-radius: 14px; overflow: hidden;
+    border: 1.5px solid var(--light-grey); transition: all 0.25s;
+  }
+  .doctor-card:hover { border-color: var(--rose-mid); box-shadow: 0 8px 32px rgba(232,67,147,0.1); transform: translateY(-2px); }
+  .doctor-photo {
+    height: 200px;
+    background: linear-gradient(135deg, #fce7f3, #fdf2f8);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px; position: relative;
+  }
+  .doctor-dept-tag {
+    position: absolute; bottom: 12px; left: 12px;
+    background: var(--rose); color: white;
+    font-size: 10px; font-weight: 700; padding: 3px 8px;
+    border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .doctor-info { padding: 20px; }
+  .doctor-info h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .doctor-info .qual { font-size: 12.5px; color: var(--text-mid); margin-bottom: 12px; line-height: 1.4; }
+  .doctor-info .avail { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #16a34a; font-weight: 600; }
+  .avail-dot { width: 6px; height: 6px; background: #16a34a; border-radius: 50%; }
+
+  /* APPOINTMENT */
+  .appt-section {
+    background: linear-gradient(135deg, var(--navy) 0%, #2d1052 100%);
+    padding: 80px 40px; position: relative; overflow: hidden;
+  }
+  .appt-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 50%, rgba(232,67,147,0.12) 0%, transparent 50%);
+  }
+  .appt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .appt-content { color: white; }
+  .appt-content .section-title { color: white; }
+  .appt-content .section-desc { color: rgba(255,255,255,0.72); }
+  .appt-info { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+  .appt-info-item { display: flex; align-items: center; gap: 14px; color: rgba(255,255,255,0.85); font-size: 15px; }
+  .appt-info-icon { width: 40px; height: 40px; background: rgba(232,67,147,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .appt-form { background: white; border-radius: 16px; padding: 36px; box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+  .appt-form h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--navy); margin-bottom: 24px; font-weight: 700; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 700; color: var(--text-mid); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 11px 14px;
+    border: 1.5px solid var(--light-grey); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text-dark);
+    outline: none; transition: border-color 0.2s; background: white;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--rose); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-submit {
+    width: 100%; background: var(--rose); color: white;
+    border: none; padding: 14px; border-radius: 8px;
+    font-size: 15px; font-weight: 700; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: background 0.2s; margin-top: 4px;
+  }
+  .form-submit:hover { background: #d4357d; }
+
+  /* FAQ */
+  .faq { background: white; }
+  .faq-list { max-width: 760px; margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--light-grey); border-radius: 12px; overflow: hidden; }
+  .faq-q {
+    padding: 18px 22px; font-weight: 600; font-size: 15px; color: var(--navy);
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; user-select: none;
+  }
+  .faq-q:hover { background: var(--rose-light); }
+  .faq-q .arrow { font-size: 18px; color: var(--rose); transition: transform 0.3s; }
+  .faq-a {
+    padding: 0 22px; max-height: 0; overflow: hidden;
+    font-size: 14.5px; color: var(--text-mid); line-height: 1.7;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-item.open { border-color: var(--rose-mid); }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--off-white); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .testi-card { background: white; border-radius: 14px; padding: 28px; border: 1.5px solid var(--light-grey); }
+  .testi-stars { color: #f59e0b; font-size: 16px; margin-bottom: 14px; }
+  .testi-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, var(--rose), #a855f7); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 16px; }
+  .testi-name { font-weight: 700; font-size: 14px; color: var(--navy); }
+  .testi-dept { font-size: 12px; color: var(--text-light); }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 60px 40px 0; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .footer-brand h2 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: white; margin-bottom: 6px; }
+  .footer-brand .tagline { color: #f9a8d4; font-size: 13px; font-style: italic; margin-bottom: 16px; font-family: 'Cormorant Garamond', serif; }
+  .footer-brand p { font-size: 13.5px; line-height: 1.7; }
+  .footer-contact { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .footer-contact-item { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; }
+  .footer-col h4 { font-size: 13px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13.5px; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: #f9a8d4; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; max-width: 1200px; margin: 0 auto; font-size: 13px; }
+  .footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+  /* WHATSAPP */
+  .whatsapp-float {
+    position: fixed; bottom: 28px; right: 28px;
+    background: #25d366; color: white;
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; text-decoration: none;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.45);
+    z-index: 999; transition: transform 0.2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); }
+
+  /* BREADCRUMB */
+  .breadcrumb { background: white; padding: 12px 40px; border-bottom: 1px solid var(--light-grey); font-size: 13px; color: var(--text-light); }
+  .breadcrumb a { color: var(--sky); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="tb-left">
+    <span class="emergency-tag">🚨 24/7 EMERGENCY</span>
+    <a href="tel:+919077919191">📞 +91 90 77 91 91 91</a>
+    <a href="mailto:avea@avhospitals.co.in">✉ avea@avhospitals.co.in</a>
+  </div>
+  <div class="tb-right">
+    <span>📍 Tirunelveli, Tamil Nadu</span>
+    <span>⏰ OPD: 8 AM – 8 PM</span>
+    <a href="#">Patient Portal</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <a href="annai_velankanni_hospital.html" class="logo">
+    <img src="AVHLogo.png" alt="Annai Velankanni Hospital Logo" style="height:52px;width:auto;object-fit:contain;">
+    <div class="logo-text">
+      <h1>Annai Velankanni</h1>
+      <p>Multispeciality Hospital</p>
+    </div>
+  </a>
+  <nav>
+    <a href="annai_velankanni_hospital.html">Home</a>
+    <a href="#">Departments</a>
+    <a href="#">Our Doctors</a>
+    <a href="healthcheckups.html">Health Checkups</a>
+    <a href="#">Facilities</a>
+    <a href="#">About</a>
+    <a href="ivf.html" class="nav-ivf">✦ IVF Centre</a>
+    <a href="#appointment" class="nav-cta">Book Appointment</a>
+  </nav>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="annai_velankanni_hospital.html">Home</a> › <a href="#">Departments</a> › IVF & Fertility Centre
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="petal">🌸</span>
+  <span class="petal">🌼</span>
+  <span class="petal">✨</span>
+  <span class="petal">🌸</span>
+  <span class="petal">💫</span>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">✦ Advanced Fertility Care</div>
+      <h2>Your Dream of<br><span class="rose">Parenthood</span><br>Starts <span class="gold">Here</span></h2>
+      <p class="hero-tagline">"Every child is a miracle. We help make miracles happen."</p>
+      <p>Annai Velankanni IVF & Fertility Centre combines cutting-edge reproductive technology with compassionate, personalised care — giving you the best possible chance at the family you've always dreamed of.</p>
+      <div class="hero-btns">
+        <a href="#appointment" class="btn-rose">Book Free Consultation</a>
+        <a href="#treatments" class="btn-outline">Explore Treatments</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">75%+</div>
+          <div class="stat-label">IVF Success Rate</div>
+        </div>
+        <div>
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Successful Births</div>
+        </div>
+        <div>
+          <div class="stat-num">15+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Personalised Care</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-circle">
+        <div class="hero-circle-icon">👨‍👩‍👧</div>
+        <h3>IVF & Fertility Centre</h3>
+        <p>Advanced reproductive medicine with a human touch</p>
+        <div class="orbit-badge">🔬 IVF Lab on-site</div>
+        <div class="orbit-badge">💊 Personalised protocols</div>
+        <div class="orbit-badge">🩺 Expert embryologists</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENTS -->
+<section class="treatments" id="treatments">
+  <div class="container">
+    <span class="section-tag tag-rose">What We Offer</span>
+    <h2 class="section-title">Comprehensive Fertility Treatments</h2>
+    <p class="section-desc">From diagnosis to delivery — a full spectrum of fertility solutions tailored to your unique situation.</p>
+    <div class="treat-grid">
+      <div class="treat-card">
+        <div class="treat-icon">🧬</div>
+        <h3>IVF — In Vitro Fertilisation</h3>
+        <p>Our flagship treatment — eggs and sperm are fertilised in a specialised lab, and healthy embryos are transferred to the uterus. High-tech, carefully monitored, personalised protocols.</p>
+        <span class="treat-tag">Most Common</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">💉</div>
+        <h3>IUI — Intrauterine Insemination</h3>
+        <p>A less invasive first-line treatment where washed sperm is directly placed into the uterus during ovulation — ideal for mild fertility challenges.</p>
+        <span class="treat-tag">Minimally Invasive</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">🔬</div>
+        <h3>ICSI — Sperm Injection</h3>
+        <p>A single healthy sperm is directly injected into an egg — the gold standard treatment for severe male factor infertility or repeated IVF failures.</p>
+        <span class="treat-tag">Male Infertility</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">❄️</div>
+        <h3>Egg & Embryo Freezing</h3>
+        <p>Preserve your fertility for the future. Vitrification technology ensures excellent survival rates for frozen eggs and embryos.</p>
+        <span class="treat-tag">Fertility Preservation</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">🧪</div>
+        <h3>PGT — Genetic Testing</h3>
+        <p>Pre-implantation genetic testing screens embryos for chromosomal abnormalities before transfer — reducing miscarriage risk and improving success rates.</p>
+        <span class="treat-tag">Advanced Screening</span>
+      </div>
+      <div class="treat-card">
+        <div class="treat-icon">🤝</div>
+        <h3>Donor Programme</h3>
+        <p>Carefully screened donor eggs, sperm, and surrogacy support — with complete medical, legal, and emotional guidance throughout the process.</p>
+        <span class="treat-tag">Donor & Surrogacy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <span class="section-tag tag-teal">How It Works</span>
+    <h2 class="section-title">Your IVF Journey — Step by Step</h2>
+    <p class="section-desc">We guide you through every stage with clarity, care, and complete support.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-circle">
+          🩺
+          <span class="step-num">1</span>
+        </div>
+        <h4>Initial Consultation</h4>
+        <p>Complete medical history, couple evaluation, and personalised treatment planning.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          💊
+          <span class="step-num">2</span>
+        </div>
+        <h4>Ovarian Stimulation</h4>
+        <p>Hormone injections to stimulate multiple egg development, monitored by ultrasound.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          🔬
+          <span class="step-num">3</span>
+        </div>
+        <h4>Egg Retrieval & Fertilisation</h4>
+        <p>Eggs collected under sedation, fertilised with sperm in our IVF laboratory.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          🧬
+          <span class="step-num">4</span>
+        </div>
+        <h4>Embryo Culture</h4>
+        <p>Fertilised embryos are cultured for 3–5 days. Best quality embryos are selected.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">
+          🌱
+          <span class="step-num">5</span>
+        </div>
+        <h4>Embryo Transfer & Follow-up</h4>
+        <p>Embryo transferred to the uterus. Pregnancy test after 14 days. Complete support throughout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS RATES -->
+<section class="success">
+  <div class="success-grid">
+    <div>
+      <span class="section-tag" style="color:#f9a8d4;">Our Results</span>
+      <h2 class="section-title">Success Rates That Speak</h2>
+      <p class="section-desc">Our outcomes consistently exceed national averages — because we personalise every treatment to every couple.</p>
+      <div class="success-stats">
+        <div class="success-stat">
+          <div class="num">75%</div>
+          <div class="label">IVF Success Rate (under 35)</div>
+        </div>
+        <div class="success-stat">
+          <div class="num">65%</div>
+          <div class="label">IVF Success Rate (35–40)</div>
+        </div>
+        <div class="success-stat">
+          <div class="num">500+</div>
+          <div class="label">Babies Born</div>
+        </div>
+        <div class="success-stat">
+          <div class="num">98%</div>
+          <div class="label">Patient Satisfaction</div>
+        </div>
+      </div>
+    </div>
+    <div class="success-visual">
+      <div class="success-bar-item">
+        <div class="success-bar-label"><span>Fresh IVF Cycle (Under 35)</span><span>75%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="success-bar-item">
+        <div class="success-bar-label"><span>Frozen Embryo Transfer</span><span>70%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+      </div>
+      <div class="success-bar-item">
+        <div class="success-bar-label"><span>IVF with ICSI</span><span>72%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
+      </div>
+      <div class="success-bar-item">
+        <div class="success-bar-label"><span>Donor Egg IVF</span><span>82%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+      </div>
+      <div class="success-bar-item">
+        <div class="success-bar-label"><span>IUI Success Rate</span><span>25%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:25%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IVF HERE -->
+<section class="why-ivf">
+  <div class="container">
+    <div class="why-ivf-grid">
+      <div class="why-ivf-visual">
+        <div class="why-ivf-visual-icon">🌸</div>
+        <p style="color:var(--text-mid); font-size:15px; text-align:center; max-width:220px; font-style:italic; font-family:'Cormorant Garamond',serif; font-size:18px;">Every parent's journey is unique. So is our care.</p>
+      </div>
+      <div>
+        <span class="section-tag tag-rose">Why Choose Us</span>
+        <h2 class="section-title">The Annai Velankanni IVF Advantage</h2>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-item-icon">🔬</div>
+            <div>
+              <h4>State-of-the-Art IVF Laboratory</h4>
+              <p>Our dedicated embryology lab uses the latest incubation, vitrification, and imaging technology to give embryos the best environment to thrive.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">👩‍⚕️</div>
+            <div>
+              <h4>Experienced Reproductive Specialists</h4>
+              <p>A dedicated team of fertility doctors and embryologists with 15+ years of combined experience in reproductive medicine.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">❤️</div>
+            <div>
+              <h4>Emotional & Counselling Support</h4>
+              <p>The fertility journey can be emotionally demanding. Our counsellors are here at every step — not just during medical procedures.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-item-icon">💰</div>
+            <div>
+              <h4>Transparent, Affordable Pricing</h4>
+              <p>No hidden costs. Clear treatment packages, EMI options, and support with insurance claims where applicable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section class="doctors">
+  <div class="container">
+    <span class="section-tag tag-rose">Our Specialists</span>
+    <h2 class="section-title">Meet Our Fertility Team</h2>
+    <div class="doctors-grid">
+      <div class="doctor-card">
+        <div class="doctor-photo">👩‍⚕️<span class="doctor-dept-tag">IVF Specialist</span></div>
+        <div class="doctor-info">
+          <h3>Dr. [IVF Specialist Name]</h3>
+          <p class="qual">MD(OBG), DRM — Reproductive Medicine Specialist<br>15+ years in fertility treatment</p>
+          <div class="avail"><span class="avail-dot"></span> Available for Consultation</div>
+        </div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-photo">👨‍⚕️<span class="doctor-dept-tag">Embryologist</span></div>
+        <div class="doctor-info">
+          <h3>Dr. [Embryologist Name]</h3>
+          <p class="qual">MSc Embryology, ESHRE Certified<br>Senior Clinical Embryologist</p>
+          <div class="avail"><span class="avail-dot"></span> In-lab Daily</div>
+        </div>
+      </div>
+      <div class="doctor-card">
+        <div class="doctor-photo">👩‍⚕️<span class="doctor-dept-tag">Andrologist</span></div>
+        <div class="doctor-info">
+          <h3>Dr. [Andrologist Name]</h3>
+          <p class="qual">MS Urology, DNB — Male Fertility Specialist<br>Expert in TESA/PESA procedures</p>
+          <div class="avail"><span class="avail-dot"></span> Available for Consultation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section class="appt-section" id="appointment">
+  <div class="appt-grid">
+    <div class="appt-content">
+      <span class="section-tag" style="color:#f9a8d4;">Start Your Journey</span>
+      <h2 class="section-title">Book a Free Fertility Consultation</h2>
+      <p class="section-desc">The first step towards parenthood is a conversation. Speak with our fertility specialist — confidential, compassionate, no pressure.</p>
+      <div class="appt-info">
+        <div class="appt-info-item">
+          <div class="appt-info-icon">📞</div>
+          <div><strong>+91 90 77 91 91 91</strong><br><small style="opacity:0.7">Call for appointment or queries</small></div>
+        </div>
+        <div class="appt-info-item">
+          <div class="appt-info-icon">✉️</div>
+          <div><strong>avea@avhospitals.co.in</strong><br><small style="opacity:0.7">Email us your questions</small></div>
+        </div>
+        <div class="appt-info-item">
+          <div class="appt-info-icon">🕐</div>
+          <div><strong>Mon – Sat: 9 AM – 6 PM</strong><br><small style="opacity:0.7">IVF consultation timings</small></div>
+        </div>
+        <div class="appt-info-item">
+          <div class="appt-info-icon">🔒</div>
+          <div><strong>Completely Confidential</strong><br><small style="opacity:0.7">Your privacy is our priority</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="appt-form">
+      <h3>Book Free Consultation</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 00000 00000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Treatment You're Interested In</label>
+        <select>
+          <option value="">Select Treatment</option>
+          <option>IVF — In Vitro Fertilisation</option>
+          <option>IUI — Intrauterine Insemination</option>
+          <option>ICSI</option>
+          <option>Egg / Embryo Freezing</option>
+          <option>PGT — Genetic Testing</option>
+          <option>Donor Programme</option>
+          <option>Not sure — need consultation</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>How Long Trying?</label>
+          <select>
+            <option>Less than 1 year</option>
+            <option>1 – 2 years</option>
+            <option>2 – 3 years</option>
+            <option>More than 3 years</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Any message (optional)</label>
+        <textarea placeholder="Brief medical history or any questions you have..."></textarea>
+      </div>
+      <button class="form-submit">Book Free Consultation →</button>
+      <p style="text-align:center; font-size:12px; color:var(--text-light); margin-top:12px;">🔒 All information is strictly confidential</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <span class="section-tag tag-rose">Common Questions</span>
+    <h2 class="section-title">IVF — Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is IVF and how does it work?
+          <span class="arrow">▾</span>
+        </div>
+        <div class="faq-a">IVF (In Vitro Fertilisation) involves stimulating the ovaries to produce multiple eggs, retrieving them, fertilising with sperm in our laboratory, and transferring the best embryo(s) into the uterus. The entire process takes about 2–3 weeks per cycle.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          How many IVF cycles will I need?
+          <span class="arrow">▾</span>
+        </div>
+        <div class="faq-a">Many couples achieve success in 1–2 cycles. However, this depends on your age, diagnosis, and response to treatment. Our doctors will discuss realistic expectations during your consultation based on your individual case.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is IVF painful?
+          <span class="arrow">▾</span>
+        </div>
+        <div class="faq-a">The stimulation injections cause mild discomfort at most. The egg retrieval is done under light sedation so you won't feel pain during the procedure. Some women experience mild cramping afterwards, which resolves quickly.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is the cost of IVF at Annai Velankanni?
+          <span class="arrow">▾</span>
+        </div>
+        <div class="faq-a">We offer transparent, package-based pricing with no hidden costs. The exact cost depends on the treatment protocol chosen. Please contact us or book a consultation for a detailed breakdown. EMI options are available.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          At what age should I consider IVF?
+          <span class="arrow">▾</span>
+        </div>
+        <div class="faq-a">We recommend consulting a fertility specialist if you are under 35 and have been trying for 12 months without success, or over 35 and trying for 6 months. Earlier consultation leads to better outcomes.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is the consultation confidential?
+          <span class="arrow">▾</span>
+        </div>
+        <div class="faq-a">Absolutely. All consultations, medical records, and treatment details are completely confidential. We understand the sensitivity of fertility treatment and take your privacy very seriously.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <span class="section-tag tag-rose">Patient Stories</span>
+    <h2 class="section-title">Families We've Helped Build</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"After 4 years of trying, Annai Velankanni IVF Centre gave us our miracle. The doctors and staff treated us with such warmth and patience. Our daughter is 2 years old now — and every day is a blessing."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div><div class="testi-name">Suganya & Karthik</div><div class="testi-dept">IVF Success — 2024</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"We came with very low hope after two failed IVF attempts elsewhere. The team here re-evaluated everything, customised our protocol, and our second cycle here was successful. Thank you from the bottom of our hearts."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div><div class="testi-name">Preethi & Rajan</div><div class="testi-dept">IVF Success — 2025</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The counsellors here are exceptional. Not just medically but emotionally — they were with us every step. When we heard our baby's heartbeat for the first time, we cried together with the doctor."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div><div class="testi-name">Amudha & Saravanan</div><div class="testi-dept">IUI Success — 2025</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h2>Annai Velankanni IVF Centre</h2>
+      <p class="tagline">"Every child is a miracle. We help make miracles happen."</p>
+      <p>A dedicated fertility centre within Annai Velankanni Multispeciality Hospital — combining advanced reproductive medicine with genuine compassionate care.</p>
+      <div class="footer-contact">
+        <div class="footer-contact-item">📞 <span>+91 90 77 91 91 91</span></div>
+        <div class="footer-contact-item">✉ <span>avea@avhospitals.co.in</span></div>
+        <div class="footer-contact-item">📍 <span>Tirunelveli, Tamil Nadu</span></div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Treatments</h4>
+      <ul>
+        <li><a href="#">IVF</a></li>
+        <li><a href="#">IUI</a></li>
+        <li><a href="#">ICSI</a></li>
+        <li><a href="#">Egg Freezing</a></li>
+        <li><a href="#">PGT</a></li>
+        <li><a href="#">Donor Programme</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Hospital</h4>
+      <ul>
+        <li><a href="annai_velankanni_hospital.html">Main Hospital</a></li>
+        <li><a href="#">All Departments</a></li>
+        <li><a href="#">Our Doctors</a></li>
+        <li><a href="#">Facilities</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Patient Help</h4>
+      <ul>
+        <li><a href="#">Book Appointment</a></li>
+        <li><a href="#">Patient Portal</a></li>
+        <li><a href="#">Insurance & TPA</a></li>
+        <li><a href="#">IVF FAQs</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Annai Velankanni Multispeciality Hospital. All rights reserved.</span>
+    <div style="display:flex;gap:20px;"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919077919191?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20IVF%20treatment" class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+
+<script>
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const allItems = document.querySelectorAll('.faq-item');
+    allItems.forEach(i => { if (i !== item) i.classList.remove('open'); });
+    item.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
